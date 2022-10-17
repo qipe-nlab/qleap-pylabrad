@@ -827,6 +827,9 @@ class TValue(Type):
         if other.unit is None:
             return True
         if self.unit is None:
+            ### NOTE: This is temporal fix by Y.Suzuki
+            if str(other.unit) == "":
+                return True
             msg = "Unreachable: no python object should get %s as type"%(self,)
             raise TypeError(msg)
         # We have a unit, and the other guy has a unit, so make sure our units
